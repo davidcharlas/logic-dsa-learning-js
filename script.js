@@ -79,3 +79,19 @@
 //     }
 //     console.log(secondLargest([10, 5, 8, 20]))
 // }
+{
+  function firstNonRepeating(arr) {
+    let count = {};
+    for (let num of arr) {
+      count[num] = (count[num] || 0) + 1;
+    }
+    // console.log(count);
+    for (let num of arr) {
+      if (count[num] === 1) {
+        return num;
+      }
+    }
+    return null;
+  }
+  console.log(firstNonRepeating([2, 3, 2, 3, 5]));
+}
