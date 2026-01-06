@@ -79,19 +79,85 @@
 //     }
 //     console.log(secondLargest([10, 5, 8, 20]))
 // }
-{
-  function firstNonRepeating(arr) {
-    let count = {};
-    for (let num of arr) {
-      count[num] = (count[num] || 0) + 1;
+//  {
+//   function firstNonRepeating(arr) {
+//     let count = {};
+//     for (let num of arr) {
+//       count[num] = (count[num] || 0) + 1;
+//     }
+//     // console.log(count);
+
+//     return Object.keys(count).find(k=> count[k] ===1);
+//   }
+//   console.log(firstNonRepeating([2, 3, 2, 3, 5]));
+// }
+// Return the number that appears the most time in the array
+// function mostFrequent(arr) {
+//   const count = {};
+//   for (let num of arr) {
+//     count[num] = (count[num] || 0) + 1;
+//   }
+//   const maxEntry= Object.entries(count).reduce((current, max)=>{
+//     const [currentKey, currentValue] = current;
+//     const [maxKey, maxValue] = max
+//     return currentValue > maxValue ? current: max;
+//   });
+//   return maxEntry
+// }
+// console.log(
+//   mostFrequent([1, 3, 3, 3, 4, 3, 2]) // 3
+// );
+/* Return True/False on the bases of Array is Sorted or not*/
+// function isSorted(arr) {
+//   for (let i = 0; i < arr.length -1; i++) {
+//     if (arr[i] > arr[i + 1]) {
+//       return false
+//     }
+//   }
+//   return true;
+// }
+// console.log(isSorted([1, 3, 3, 4]));
+// console.log(isSorted([1, 3, 2]));
+// console.log(isSorted([1, 2, 3, 4]));    // true
+// console.log(isSorted([1, 3, 2]));       // false
+// console.log(isSorted([10, 20, 30]));    // true
+// console.log(isSorted([5, 4, 3, 2, 1])); // false
+/* Return the missing number from a series of number in array*/
+// function findMissing(arr){
+//   const n = arr.length + 1;
+//   const expectedSum = (n*(n+1)) /2;
+//   const actualSum = arr.reduce((sum,current)=> sum += current)
+//   return expectedSum - actualSum
+// }
+// console.log(findMissing([1, 2, 3, 5, 6])) // Output = 4
+// Returns even and odd
+// function groupEvenOdd(arr) {
+//   return arr.reduce(
+//     (acc, num)=> {
+//       if (num % 2 === 0){
+//         acc.even.push(num)
+//       }
+//       else{
+//         acc.odd.push(num)
+//       }
+//       return acc;
+//     },
+//     {even: [], odd: []}
+//   );
+// }
+
+// console.log(JSON.stringify(groupEvenOdd([1, 2, 3, 4, 5, 6])));
+// Returns only unique numbers from the array || which are not repeated
+function uniqueOnly(arr) {
+  const frequency = arr.reduce((count, num) => {
+    count[num] = (count[num] || 0) + 1;
+    return count;
+  }, {});
+  return arr.reduce((result, num)=> {
+    if(frequency[num] === 1){
+      result.push(num)
     }
-    // console.log(count);
-    for (let num of arr) {
-      if (count[num] === 1) {
-        return num;
-      }
-    }
-    return null;
-  }
-  console.log(firstNonRepeating([2, 3, 2, 3, 5]));
+    return result
+  },[])
 }
+console.log(uniqueOnly([1, 2, 2, 3, 3, 3, 4]))
