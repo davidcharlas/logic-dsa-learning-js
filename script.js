@@ -148,16 +148,86 @@
 
 // console.log(JSON.stringify(groupEvenOdd([1, 2, 3, 4, 5, 6])));
 // Returns only unique numbers from the array || which are not repeated
-function uniqueOnly(arr) {
-  const frequency = arr.reduce((count, num) => {
-    count[num] = (count[num] || 0) + 1;
-    return count;
-  }, {});
-  return arr.reduce((result, num)=> {
-    if(frequency[num] === 1){
-      result.push(num)
+// function uniqueOnly(arr) {
+//   const frequency = arr.reduce((count, num) => {
+//     count[num] = (count[num] || 0) + 1;
+//     return count;
+//   }, {});
+//   return arr.reduce((result, num)=> {
+//     if(frequency[num] === 1){
+//       result.push(num)
+//     }
+//     return result
+//   },[])
+// }
+// console.log(uniqueOnly([1, 2, 2, 3, 3, 3, 4]))
+
+/* Returns the common values in both array (No Duplicates) */
+// function arrayIntersection(arr1, arr2) {
+//   // it creates a new array of unique values
+//   const set2 = new Set(arr2);
+
+//   const intersectedArray = arr1.filter((item) => set2.has(item));
+
+//   return [...new Set(intersectedArray)];
+// }
+// console.log(arrayIntersection([1, 2, 3, 4], [3, 4, 5, 6]));
+// {
+//   /** Converts a Nested Array(1-LEVEL) to a Single Array  */
+//   function flatten(arr){
+//     // flat method is used for array flaterning
+//     const concat = arr.flat()
+//     console.log(concat);
+
+//   }
+//   flatten([1, [2, 3], [4], 5]) // [1, 2, 3, 4, 5]
+
+// }
+// {
+//   /** Return a longest word from a string of sentence */
+//   function longestWord(str){
+//     const word = str.split(" ")
+//     console.log(word);
+//     const longestWord = word.reduce((longest, currentWord)=>{
+//       return currentWord.length > longest.length? currentWord: longest;
+//     })
+//     return console.log(longestWord);
+
+//   }
+//   longestWord("JavaScript makes web development powerful")// "development"
+// }
+/**Rotate the array to the right by k steps. */
+// function revNums(nums, start, end) {
+//   while (start < end) {
+//     [nums[start], nums[end]] = [nums[end], nums[start]];
+//     start ++;
+//     end --;
+//   }
+
+// }
+
+// const rotate = function (nums, k) {
+//   console.log("Input Array and k is:" , nums, k);
+//   k = k % nums.length;
+//   nums.reverse();
+//   console.log("After Reverse and MOD:",nums, k);
+//   revNums(nums , 0, k-1)
+//   console.log("after --step 1: ", nums);
+//   revNums(nums, k , nums.length -1)
+//   console.log("Final result is :: --",nums);
+
+// };
+// rotate([1,2,3,4,5,6,7],3);
+/** Return True/False on the basis of both Arrays are equal (same order) */
+function areEqual(arr1, arr2) {
+  let areEqual;
+  if (arr1.length === arr2.length) {
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i] === arr2[i]) {
+        areEqual = true;
+      } else return false;
     }
-    return result
-  },[])
+  } else return false;
+  return areEqual;
 }
-console.log(uniqueOnly([1, 2, 2, 3, 3, 3, 4]))
+console.log(areEqual([1, 2, 3], [1, 2, 3]));
