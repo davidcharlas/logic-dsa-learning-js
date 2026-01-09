@@ -219,15 +219,54 @@
 // };
 // rotate([1,2,3,4,5,6,7],3);
 /** Return True/False on the basis of both Arrays are equal (same order) */
-function areEqual(arr1, arr2) {
-  let areEqual;
-  if (arr1.length === arr2.length) {
-    for (let i = 0; i < arr1.length; i++) {
-      if (arr1[i] === arr2[i]) {
-        areEqual = true;
-      } else return false;
-    }
-  } else return false;
-  return areEqual;
+// function areEqual(arr1, arr2) {
+//   let areEqual;
+//   if (arr1.length === arr2.length) {
+//     for (let i = 0; i < arr1.length; i++) {
+//       if (arr1[i] === arr2[i]) {
+//         areEqual = true;
+//       } else return false;
+//     }
+//   } else return false;
+//   return areEqual;
+// }
+// console.log(areEqual([1, 2, 3], [1, 2, 3]));
+/** Return the first unique Character from a String */
+// function firstUniqueChar(str){
+//   const fCount = str.split("").reduce((count, num)=>{
+//     count[num] = (count[num] || 0 ) +1
+//     return count
+//   },{})
+//   console.log(fCount);
+//   return Object.keys(fCount).find(k => fCount[k] === 1)
+
+// }
+// console.log("First Unique Char:",firstUniqueChar("aabbcdde"));
+/** Chunked array w.r.t given size */
+// function chunkedArray(arr, size) {
+//   const res = [];
+//   for (let i = 0; i < arr.length; i += size) {
+//     res.push(arr.slice(i, i + size));
+//   }
+//   return res;
+// }
+// console.log(chunkedArray([1, 2, 3, 4, 5, 6, 7], 3));
+/** Returns True/False based on whether string is Palindrome */
+// function isPalindrome(str1){
+//   const str2 = str1.split('').reverse().join('')
+//   console.log(str2);
+//   return str1 === str2? true: false
+// }
+// console.log(isPalindrome("abba"));
+/** Converts Array to Object using key as id*/
+const arrOfObject = [
+  { id: 1, name: "JS" },
+  { id: 2, name: "React" },
+];
+function convert(arr) {
+  return arr.reduce((accumulator, value) => {
+    accumulator[value.id] = value
+    return accumulator
+  },{})
 }
-console.log(areEqual([1, 2, 3], [1, 2, 3]));
+console.table(convert(arrOfObject));
