@@ -259,14 +259,85 @@
 // }
 // console.log(isPalindrome("abba"));
 /** Converts Array to Object using key as id*/
-const arrOfObject = [
-  { id: 1, name: "JS" },
-  { id: 2, name: "React" },
-];
-function convert(arr) {
-  return arr.reduce((accumulator, value) => {
-    accumulator[value.id] = value
-    return accumulator
-  },{})
+// const arrOfObject = [
+//   { id: 1, name: "JS" },
+//   { id: 2, name: "React" },
+// ];
+// function convert(arr) {
+//   return arr.reduce((accumulator, value) => {
+//     accumulator[value.id] = value
+//     return accumulator
+//   },{})
+// }
+// console.table(convert(arrOfObject));
+/** Returns a smallest substring that contains all given character */
+function smallestWindow(str, input) {}
+smallestWindow("ADOBECODEBANC", "ABC");
+/** Return a compressed string Using Run-Length Encoding */
+// function compress(str) {
+//   if (!str) return "";
+//   const compressed = [];
+//   let count = 1;
+//   for (let i = 0; i < str.length; i++) {
+//     if (str[i] === str[i + 1]) {
+//       count++;
+//     } else {
+//       compressed.push(str[i] + count);
+//       count = 1;
+//     }
+//   }
+//   console.log(compressed.join(""));
+// }
+// compress("aaabbcaaa"); // "a3b2c1a3"
+/** Returns the longest subarray equal to given number */
+// const longestSubarray = function (arr, k) {
+//   let sum = 0;
+//   let min = Infinity;
+//   let left = 0;
+//   for (let i = 0; i < arr.length; i++) {
+//     sum += arr[i];
+//     while (sum >= k) {
+//       min = Math.min(min, i - left + 1);
+//       sum -= arr[left];
+//       left++;
+//     }
+//   }
+//   return console.log(min === Infinity ? 0 : min);
+// };
+// longestSubarray([1, 2, 3, 1, 1, 1, 1], 3); // 3
+/** Group anagrams together */
+// function groupAnagrams(arr) {
+//   const groups = arr.reduce((acc, word) => {
+//     const key = word.toLowerCase().split("").sort().join();
+//     if (!acc[key]) {
+//       acc[key] = [];
+//     }
+//     acc[key].push(word);
+//     return acc;
+//   }, {});
+//   return Object.values(groups);
+// }
+// console.table(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
+// [
+//   ["eat","tea","ate"],
+//   ["tan","nat"],
+//   ["bat"]
+// ]
+/** Returns the first missing positive integer from an unsorted array */
+function firstMissingPositive(arr) {
+  const n = arr.length;
+  const present = new Array(n + 1).fill(false);
+
+  for (let num of arr) {
+    if (num > 0 && num <= n) {
+      present[num] = true;
+    }
+  }
 }
-console.table(convert(arrOfObject));
+for (let i = 1; i <= n; i++) {
+  if (!present[i]) {
+    return i;
+  }
+  return n + 1;
+}
+console.log(firstMissingPositive([3, 4, -1, 1])); // 2
