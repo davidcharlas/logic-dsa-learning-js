@@ -409,14 +409,65 @@ smallestWindow("ADOBECODEBANC", "ABC");
 // console.log(secondLargest([10, 20, 20, 8])); // 10
 // console.log(secondLargest([5, 5, 5, 1])); // 1
 /** Returns first Unique Character from a string */
-function firstUnique(str) {
-  const hash = {};
-  for (const char of str) {
-    hash[char] = (hash[char] || 0) + 1;
-  }
-  const res = Object.keys(hash).find(k => hash[k] === 1) 
-  return res === undefined ? null : res
-}
-console.log(firstUnique("aabbccd")); // "d"
-console.log(firstUnique("aabbcc")); // null
-console.log(firstUnique("leetcode")); // "l"
+// function firstUnique(str) {
+//   const hash = {};
+//   for (const char of str) {
+//     hash[char] = (hash[char] || 0) + 1;
+//   }
+//   const res = Object.keys(hash).find(k => hash[k] === 1)
+//   return res === undefined ? null : res
+// }
+// console.log(firstUnique("aabbccd")); // "d"
+// console.log(firstUnique("aabbcc")); // null
+// console.log(firstUnique("leetcode")); // "l"
+/** Returns a array with all zeros shifted at the end */
+// function moveZero(nums) {
+//   let nonZeroI = 0;
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] !== 0) {
+//       nums[nonZeroI] = nums[i];
+//       nonZeroI++;
+//     }
+//   }
+//   // console.log(nonZeroI);
+//   for (let i = nonZeroI; i < nums.length; i++) {
+//     nums[i] = 0;
+//   }
+//   return nums;
+// }
+// console.log(moveZero([0, 1, 0, 3, 12]));
+/** Returns the longest word in a string */
+// function longest(str){
+//   const arr = str.split(" ")
+//   let max= arr[0];
+//   console.log(arr)
+//   for (var i = 0; i < arr.length;i++) {
+//     if (arr[i].length>max.length) {
+//       max = arr[i]
+//     }
+//   }
+//   return console.log(max)
+// }
+// longest("I love JavaScript programming")
+/** Capitalize the first letter of each word in a string */
+// function toCapitalize(str){
+//   const arr = str.split(" ")
+//   for (var i =0; i< arr.length; i++){
+//     arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1)
+//   }
+//   return arr.join(" ")
+// }
+// console.log(toCapitalize("hello world from javascript")) // "Hello World From Javascript"
+/** Returns true if an array is a palindrome */
+// function isPalindrome(arr1) {
+//   const arr2 = arr1.reverse();
+//   return arr1.every((element) => arr2[element]);
+// }
+// console.log(isPalindrome([1, 2, 3, 2, 1])); // true
+// console.log(isPalindrome([1, 2, 3])); // false
+// console.log(isPalindrome([1, 2, 1])); // true
+/** Returns the difference between two arrays */
+// function differ(arr1,arr2) {
+//   return arr1.filter((element) => !arr2.includes(element))
+// }
+// console.log(differ([1,2,3,4,5],[4,5,6,7]))// [1,2,3]
