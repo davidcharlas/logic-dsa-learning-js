@@ -324,20 +324,99 @@ smallestWindow("ADOBECODEBANC", "ABC");
 //   ["bat"]
 // ]
 /** Returns the first missing positive integer from an unsorted array */
-function firstMissingPositive(arr) {
-  const n = arr.length;
-  const present = new Array(n + 1).fill(false);
+// function firstMissingPositive(arr) {
+//   const n = arr.length;
+//   const present = new Array(n + 1).fill(false);
 
-  for (let num of arr) {
-    if (num > 0 && num <= n) {
-      present[num] = true;
-    }
+//   for (let num of arr) {
+//     if (num > 0 && num <= n) {
+//       present[num] = true;
+//     }
+//   }
+// }
+// for (let i = 1; i <= n; i++) {
+//   if (!present[i]) {
+//     return i;
+//   }
+//   return n + 1;
+// }
+// console.log(firstMissingPositive([3, 4, -1, 1])); // 2
+/** Return True if a string has valid matching parentheses*/
+// function isValid(str) {
+//   const stack = [];
+//   const map = {
+//     "(": ")",
+//     "{": "}",
+//     "[": "]",
+//   };
+//   for (const char of str) {
+//     // console.log(char);
+
+//     if (map[char]) {
+//       stack.push(char);
+//     } else {
+//       if (map[stack.pop()] !== char) {
+//         return false;
+//       }
+//     }
+//   }
+//   console.log("Your stack is: ", stack);
+
+//   return stack.length === 0 ? true : false;
+// }
+// console.log(isValid("()[]{}")); // true
+// // console.log();
+// console.log(isValid("(]")); // false
+// console.log(isValid("([{}])")); // true
+/** Return indices of two elements those sum is equal to target */
+// function twoSum(arr, n) {
+//   const map = {};
+//   for (let i = 0; i < arr.length; i++) {
+//     const val = arr[i];
+//     map[val] = i;
+//   }
+//   // console.table(map);
+//   for (let i = 0; i < arr.length; i++) {
+//     const targetKey = n - arr[i];
+//     if (map[targetKey] !== undefined) {
+//       return [i, map[targetKey]];
+//     }
+//   }
+// }
+// console.log(twoSum([2, 7, 11, 15], 9)); // [0,1]
+/** Returns a string with each word reversed */
+// function reverseWords(str) {
+//   let words = str.split(" ");
+//   console.log(words);
+
+//   for (let i = 0; i < words.length; i++) {
+//     words[i] = words[i].split("").reverse().join("");
+//   }
+//   console.log(words);
+
+//   return words.join(" ");
+// }
+// console.log(reverseWords("JavaScript is fun")); // "tpircSavaJ si nuf"
+/** Returns the second largest unique number from an array */
+// function secondLargest(arr) {
+//   const array = [...new Set(arr)];
+//   // console.log(array);
+//   const sorted = array.sort((a, b) => b - a);
+//   // console.log(sorted);
+//   return sorted[1];
+// }
+// console.log(secondLargest([10, 5, 20, 8])); // 10
+// console.log(secondLargest([10, 20, 20, 8])); // 10
+// console.log(secondLargest([5, 5, 5, 1])); // 1
+/** Returns first Unique Character from a string */
+function firstUnique(str) {
+  const hash = {};
+  for (const char of str) {
+    hash[char] = (hash[char] || 0) + 1;
   }
+  const res = Object.keys(hash).find(k => hash[k] === 1) 
+  return res === undefined ? null : res
 }
-for (let i = 1; i <= n; i++) {
-  if (!present[i]) {
-    return i;
-  }
-  return n + 1;
-}
-console.log(firstMissingPositive([3, 4, -1, 1])); // 2
+console.log(firstUnique("aabbccd")); // "d"
+console.log(firstUnique("aabbcc")); // null
+console.log(firstUnique("leetcode")); // "l"
