@@ -471,3 +471,39 @@ smallestWindow("ADOBECODEBANC", "ABC");
 //   return arr1.filter((element) => !arr2.includes(element))
 // }
 // console.log(differ([1,2,3,4,5],[4,5,6,7]))// [1,2,3]
+/** Returns true if a user’s request is at most 3 times per 10 Sec. */
+// const users = {};
+// function allow(userId, time) {
+//   if (!users[userId]) {
+//     users[userId] = [];
+//   }
+//   users[userId] = users[userId].filter((t) => t > time - 10);
+
+//   if (users[userId].length >= 3) {
+//     console.table(users);
+
+//     return false;
+//   }
+//   users[userId].push(time);
+//   console.table(users);
+
+//   return true;
+// }
+// console.log(allow("u1", 1)); // true
+// console.log(allow("u1", 2)); // true
+// console.log(allow("u1", 3)); // true
+// console.log(allow("u1", 8)); // false (4th request in 10 sec window)
+// console.log(allow("u1", 11)); // true (1 expired, window reset)
+/**returns false if the user has been inactive for more than 15 minutes; the session is dead. */
+function isSessionValid(lastActiveTime) {
+  const currentTime = new Date();
+  let seconds = currentTime.getSeconds;
+  console.log(seconds);
+
+  if (currentTime.getSeconds - lastActiveTime > 15) {
+    return false;
+  } else return true;
+}
+console.log(isSessionValid(5)); // true
+console.log(isSessionValid(10)); // true
+console.log(isSessionValid(30)); // false || expired
