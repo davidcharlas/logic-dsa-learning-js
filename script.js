@@ -495,15 +495,54 @@ smallestWindow("ADOBECODEBANC", "ABC");
 // console.log(allow("u1", 8)); // false (4th request in 10 sec window)
 // console.log(allow("u1", 11)); // true (1 expired, window reset)
 /**returns false if the user has been inactive for more than 15 minutes; the session is dead. */
-function isSessionValid(lastActiveTime) {
-  const currentTime = new Date();
-  let seconds = currentTime.getSeconds;
-  console.log(seconds);
+// function isSessionValid(lastActiveTime) {
+//   const currentTime = new Date();
+//   let seconds = currentTime.getSeconds;
+//   console.log(seconds);
 
-  if (currentTime.getSeconds - lastActiveTime > 15) {
-    return false;
-  } else return true;
+//   if (currentTime.getSeconds - lastActiveTime > 15) {
+//     return false;
+//   } else return true;
+// }
+// console.log(isSessionValid(5)); // true
+// console.log(isSessionValid(10)); // true
+// console.log(isSessionValid(30)); // false || expired
+/** Returns online if user's last message time is less than 30 seconds */
+// function isOnline(lastMessageTime) {
+// const seconds = Math.floor(Date.now() / 1000);
+// console.log(seconds)
+
+//   if (seconds - lastMessageTime > 30) {
+//     return false;
+//   } else return true;
+// }
+// console.log(isOnline(1768453143));
+/** Returns true/false based on whether the account is locked. */
+function isAccountLocked(attempts, time) {
+  let failedCount = 0;
+  let lastfailTime = null;
+  for (const attempt of attempts) {
+    if (attempt.success === false) {
+      failedCount++
+      lastfailTime = attempt.time
+      
+      if (failedCount === 3) {
+        break;
+      }
+    }
+    else{
+      failedCount = 0;
+      lastfailTime = null
+    }
+  }
+  if(failedCount < 3) return false
+  return (time - lastfailTime < 300)
 }
-console.log(isSessionValid(5)); // true
-console.log(isSessionValid(10)); // true
-console.log(isSessionValid(30)); // false || expired
+const attempts = [
+  { time: 10, success: false },
+  { time: 20, success: false },
+  { time: 30, success: false },
+];
+
+console.log(isAccountLocked(attempts, 200)); // true (still locked)
+console.log(isAccountLocked(attempts, 400)); // false (unlocked)
